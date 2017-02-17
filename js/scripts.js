@@ -102,7 +102,7 @@ $(document).ready(function() {
       var trackSuggestion = findTrackSuggestion(design, ruby, php, enterprise, microsoft);
 
       // add track suggestion to suggestion-showing div
-      $("#suggestion-showing").text(trackSuggestion);
+      $("#suggestion-showing").text(trackSuggestion).fadeIn();
 
       // display track suggestion and hide placeholder message
       $("#suggestion-hidden").hide();

@@ -6,3 +6,49 @@
   font-weight: bold;
   background-color: red;
 }
+
+#suggestion-showing {
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#heading .jumbotron {
+  margin-bottom: 20px;
+  padding: 0px;
+  background-color: inherit;
+}
+
+#heading .jumbotron h1 {
+  color: #3F3FD4;
+}
+
+#heading .jumbotron p {
+  color: #8181EB;
+}
+
+#questions .panel-heading, #suggestion .panel-heading {
+  background-color: #3F3FD4;
+}
+
+#questions .panel-title, #suggestion .panel-title {
+  font-size: 25px;
+  color: white;
+}
+
+#questions h3 {
+  font-size: 18px;
+}
+
+.btn {
+  background-color: #DADAFD;
+}
+
+a {
+  color: #8181EB;
+}
+
+a:hover {
+  color: #1D1DC5;
+  text-decoration: none;
+}
