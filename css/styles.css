@@ -1,3 +1,8 @@
-#suggestion-showing {
+#suggestion-showing, #suggestion-error {
   display: none;
+}
+
+#suggestion-error p {
+  font-weight: bold;
+  background-color: red;
 }

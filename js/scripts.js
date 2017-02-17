@@ -45,12 +45,9 @@ var findTrackSuggestion = function(designInput, rubyInput, phpInput, enterpriseI
   if (microsoftInput === "yes") {
     enterpriseScore += 6;
   } else if (microsoftInput === "no") {
-    enterpriseScore += 0;
+    enterpriseScore += 1;
   }
 
-  if (designScore === 0 && programmingScore === 0 && enterpriseScore === 0) {
-    return "No input";
-  }
   // determine winning factor by finding largest score factor
   if (designScore > programmingScore && designScore > enterpriseScore) {
     winningFactor = "design";
@@ -87,8 +84,9 @@ $(document).ready(function() {
     // prevent actual form submission
     event.preventDefault();
 
-    // hide prior track suggestion and show placeholder message
+    // hide prior track suggestion or error message and show placeholder message
     $("#suggestion-showing").hide();
+    $("#suggestion-error").hide();
     $("#suggestion-hidden").show();
 
     // decalare input variables and initialize with form input
@@ -98,23 +96,21 @@ $(document).ready(function() {
     var enterprise = parseInt($("#enterprise").val());
     var microsoft = $("input:radio[name='microsoft']:checked").val();
 
-    console.log("Design: " + design);
-    console.log("Design: " + ruby);
-    console.log("Design: " + php);
-    console.log("Design: " + enterprise);
-    console.log("Design: " + microsoft);
+    // display track suggestion based on fully completed form input; otherwise, display error message
+    if (design && ruby && php && enterprise && microsoft) {
+      // pass input variables to function to find track suggestion
+      var trackSuggestion = findTrackSuggestion(design, ruby, php, enterprise, microsoft);
 
-    // pass input variables to function to find track suggestion
-    var trackSuggestion = findTrackSuggestion(design, ruby, php, enterprise, microsoft);
-
-    // only show track suggestion if all form inputs are valid
-    if (trackSuggestion !== "No input") {
       // add track suggestion to suggestion-showing div
       $("#suggestion-showing").text(trackSuggestion);
 
       // display track suggestion and hide placeholder message
       $("#suggestion-hidden").hide();
       $("#suggestion-showing").show();
+    } else {
+      // display error message and hide placeholder message
+      $("#suggestion-hidden").hide();
+      $("#suggestion-error").show();
     }
 
   });
