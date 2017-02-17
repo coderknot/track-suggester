@@ -1,5 +1,6 @@
 $(document).ready(function() {
   $("form#track-form").submit(function() {
+
     event.preventDefault();
 
     var design = $("input:radio[name='design']:checked").val();
@@ -11,6 +12,8 @@ $(document).ready(function() {
     var designScore = 0;
     var programmingScore = 0;
     var enterpriseScore = 0;
+
+    var winningFactor = "";
 
     if(design === "yes") {
       designScore += 6;
@@ -44,6 +47,30 @@ $(document).ready(function() {
       enterpriseScore += 6;
     } else {
       enterpriseScore += 0;
+    }
+
+    if(designScore > programmingScore && designScore > enterpriseScore) {
+      winningFactor = "design";
+    } else if (programmingScore > enterpriseScore) {
+      winningFactor = "programming";
+    } else {
+      winningFactor = "enterprise";
+    }
+
+    if(winningFactor == "design") {
+      $("#suggestion-showing").text("CSS/Design");
+    } else if (winningFactor === "programming") {
+      if(programmingScore <= 5) {
+        $("#suggestion-showing").text("PHP/Drupal");
+      } else {
+        $("#suggestion-showing").text("Ruby/Rails");
+      }
+    } else {
+      if(enterpriseScore <= 5) {
+        $("#suggestion-showing").text("Java/Android");
+      } else {
+        $("#suggestion-showing").text("C#/.Net");
+      }
     }
 
   });
