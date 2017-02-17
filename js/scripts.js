@@ -3,6 +3,9 @@ $(document).ready(function() {
 
     event.preventDefault();
 
+    $("#suggestion-hidden").show();
+    $("#suggestion-showing").hide();
+
     var design = $("input:radio[name='design']:checked").val();
     var ruby = $("input:radio[name='ruby']:checked").val();
     var php = parseInt($("#php").val());
@@ -72,6 +75,9 @@ $(document).ready(function() {
         $("#suggestion-showing").text("C#/.Net");
       }
     }
+
+    $("#suggestion-hidden").hide();
+    $("#suggestion-showing").show();
 
   });
 });
