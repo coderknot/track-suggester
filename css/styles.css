@@ -44,6 +44,11 @@
   background-color: #DADAFD;
 }
 
+body {
+  background-image: url("../img/tracks.jpg");
+  background-size: auto;
+  background-repeat: no-repeat;
+}
 a {
   color: #8181EB;
 }
